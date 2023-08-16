@@ -9,9 +9,9 @@ class LocaleString extends Translations {
         //ENGLISH LANGUAGE
         'en_US': {
           'hello': 'Hello World',
-          'message': 'Welcome to Proto Coders Point',
+          'message': 'Welcome to oro Irrigation ',
           'title': 'Flutter Language - Localization',
-          'sub': 'Subscribe Now',
+          'subscribe': 'Change Language click here',
           'changelang': 'Change Language',
           'title2': 'Second Page',
           'Next': 'Next',
@@ -21,7 +21,7 @@ class LocaleString extends Translations {
           'hello': 'नमस्ते दुनिया',
           'message': 'प्रोटो कोडर प्वाइंट में आपका स्वागत है',
           'title': 'स्पंदन भाषा - स्थानीयकरण',
-          'subscribe': 'सब्सक्राइब',
+          'subscribe': 'भाषा बदलें यहां क्लिक करें',
           'changelang': 'भाषा बदलो',
           'title2': 'दूसरा पेज',
           'Next': 'अगला',
@@ -31,7 +31,7 @@ class LocaleString extends Translations {
           'hello': 'ಹಲೋ ವರ್ಲ್ಡ್',
           'message': 'ಪ್ರೋಟೋ ಕೋಡರ್ ಪಾಯಿಂಟ್‌ಗೆ ಸುಸ್ವಾಗತ',
           'title': 'ಬೀಸು ಭಾಷೆ - ಸ್ಥಳೀಕರಣ',
-          'subscribe': 'ವಂತಿಗೆ ಕೊಡು',
+          'subscribe': 'ಭಾಷೆಯನ್ನು ಬದಲಾಯಿಸಿ ಇಲ್ಲಿ ಕ್ಲಿಕ್ ಮಾಡಿ',
           'changelang': 'ಭಾಷೆ ಬದಲಿಸಿ',
           'title2': 'ಎರಡನೇ ಪುಟ',
           'Next': 'ಮುಂದೆ',
@@ -41,25 +41,10 @@ class LocaleString extends Translations {
           'hello': 'வணக்கம் ',
           'message': 'ஓரோ பாசனத்திற்கு வரவேற்கிறோம்',
           'title': 'மொழி - உள்ளூர்மயமாக்கல்',
-          'subscribe': 'சந்தா செலுத்து',
+          'subscribe': 'மொழியை மாற்ற இங்கே கிளிக் செய்யவும்',
           'changelang': 'மொழியை மாற்றவும்',
           'title2': 'இரண்டாவது பக்கம்',
           'Next': 'அடுத்து',
-        }
-      };
-}
-
-class Messages extends Translations {
-  @override
-  Map<String, Map<String, String>> get keys => {
-        'en_US': {
-          'hello': 'Hello World',
-        },
-        'hi_IN': {
-          'hello': 'नमस्ते दुनिया',
-        },
-        'ta_IN': {
-          'hello': 'வணக்கம்',
         }
       };
 }

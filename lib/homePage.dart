@@ -54,43 +54,52 @@ class HomePage extends StatelessWidget {
         appBar: AppBar(
           title: Text('title'.tr),
         ),
-        body: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Text(
-              'hello'.tr,
-              style: TextStyle(fontSize: 15),
-              textAlign: TextAlign.center,
-            ),
-            SizedBox(
-              height: 10,
-            ),
-            Text(
-              'message'.tr,
-              style: TextStyle(fontSize: 20),
-            ),
-            SizedBox(
-              height: 10,
-            ),
-            Text(
-              'subscribe'.tr,
-              style: TextStyle(fontSize: 20),
-            ),
-            ElevatedButton(
+        body: Container(
+          alignment: Alignment.center,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Text(
+                'hello'.tr,
+                style: TextStyle(fontSize: 20),
+                textAlign: TextAlign.center,
+              ),
+              SizedBox(
+                height: 10,
+              ),
+              Text(
+                'message'.tr,
+                style: TextStyle(fontSize: 20),
+              ),
+              SizedBox(
+                height: 10,
+              ),
+              Text(
+                'subscribe'.tr,
+                style: TextStyle(fontSize: 17),
+              ),
+              ElevatedButton(
+                  onPressed: () {
+                    buildLanguageDialog(context);
+                  },
+                  child: Text('changelang'.tr)),
+              SizedBox(
+                height: 100,
+              ),
+              FloatingActionButton(
                 onPressed: () {
-                  buildLanguageDialog(context);
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const secondPage(),
+                    ),
+                  );
                 },
-                child: Text('changelang'.tr)),
-            FloatingActionButton(onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => const secondPage(),
-                ),
-              );
-            })
-          ],
+                child: Icon(Icons.add_box),
+              ),
+            ],
+          ),
         ));
   }
 }
