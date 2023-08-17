@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:select_lang/homePage.dart';
+import 'package:select_lang/langsample..dart';
+import 'package:select_lang/languagetest.dart';
 import 'package:select_lang/localeString.dart';
+import 'package:provider/provider.dart';
 
 void main() {
   runApp(MyApp());
@@ -19,7 +22,9 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: HomePage(),
+      // home: LanguageScreen(),
+      home: Langsample(),
+      //home: HomePage(),
     );
   }
 }
