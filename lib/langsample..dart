@@ -57,7 +57,7 @@ class _HomePageState extends State<HomePage> {
       // id != null -> update an existing item
       final existingJournal =
           _journals.firstWhere((element) => element['id'] == id);
-      _defaultlangController.text = existingJournal['default'];
+      _defaultlangController.text = existingJournal['defaultlang'];
       _englishController.text = existingJournal['english'];
       _tamilController.text = existingJournal['tamil'];
       _hindiController.text = existingJournal['hindi'];
@@ -175,7 +175,7 @@ class _HomePageState extends State<HomePage> {
                 color: Colors.orange[200],
                 margin: const EdgeInsets.all(15),
                 child: ListTile(
-                    title: Text(_journals[index]['default']),
+                    title: Text(_journals[index]['defaultlang']),
                     subtitle: Text(_journals[index]['english']),
                     trailing: SizedBox(
                       width: 100,

@@ -4,12 +4,12 @@ import 'package:sqflite/sqflite.dart' as sql;
 
 class SQLHelper {
   static Future<void> createTables(sql.Database database) async {
-    await database.execute("""CREATE TABLE items(
+    await database.execute("""CREATE TABLE langu(
         id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
-        default TEXT,
+        defaultlang TEXT,
         english TEXT,
         tamil TEXT,
-        hindi TEXT,
+        hindi TEXT
        )
       """);
   }
@@ -33,12 +33,12 @@ class SQLHelper {
     final db = await SQLHelper.db();
 
     final data = {
-      'default': defaultlang,
+      'defaultlang': defaultlang,
       'english': english,
       'tamil': tamil,
       'hindi': hindi
     };
-    final id = await db.insert('items', data,
+    final id = await db.insert('langu', data,
         conflictAlgorithm: sql.ConflictAlgorithm.replace);
     return id;
   }
@@ -46,14 +46,14 @@ class SQLHelper {
   // Read all items (journals)
   static Future<List<Map<String, dynamic>>> getItems() async {
     final db = await SQLHelper.db();
-    return db.query('items', orderBy: "id");
+    return db.query('langu', orderBy: "id");
   }
 
   // Read a single item by id
   // The app doesn't use this method but I put here in case you want to see it
   static Future<List<Map<String, dynamic>>> getItem(int id) async {
     final db = await SQLHelper.db();
-    return db.query('items', where: "id = ?", whereArgs: [id], limit: 1);
+    return db.query('langu', where: "id = ?", whereArgs: [id], limit: 1);
   }
 
   // Update an item by id
@@ -62,14 +62,14 @@ class SQLHelper {
     final db = await SQLHelper.db();
 
     final data = {
-      'default': defaultlang,
+      'defaultlang': defaultlang,
       'english': english,
       'tamil': tamil,
       'hindi': hindi
     };
 
     final result =
-        await db.update('items', data, where: "id = ?", whereArgs: [id]);
+        await db.update('langu', data, where: "id = ?", whereArgs: [id]);
     return result;
   }
 
@@ -77,7 +77,7 @@ class SQLHelper {
   static Future<void> deleteItem(int id) async {
     final db = await SQLHelper.db();
     try {
-      await db.delete("items", where: "id = ?", whereArgs: [id]);
+      await db.delete("langu", where: "id = ?", whereArgs: [id]);
     } catch (err) {
       debugPrint("Something went wrong when deleting an item: $err");
     }
