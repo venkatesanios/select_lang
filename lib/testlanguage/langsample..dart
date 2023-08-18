@@ -41,7 +41,8 @@ class _HomePageState extends State<HomePage> {
   @override
   void initState() {
     super.initState();
-    _refreshJournals(); // Loading the diary when the app starts
+    _refreshJournals();
+    _Againinsert(); // Loading the diary when the app starts
   }
 
   final TextEditingController _defaultlangController = TextEditingController();
@@ -136,6 +137,52 @@ class _HomePageState extends State<HomePage> {
             ));
   }
 
+  void _Againinsert() async {
+    // setState(() async {
+    for (var i = 0; i < _journals.length; i++) {
+      print('Again.inserts');
+
+      print(_journals.length);
+      String defaultval = _journals[i]['defaultlang'];
+      String englishval = _journals[i]['english'];
+      String tamilval = _journals[i]['tamil'];
+      String hindival = _journals[i]['hindi'];
+
+      await SQLHelper.createItem(defaultval, englishval, tamilval, hindival);
+    }
+    // });
+
+    _refreshJournals();
+  }
+
+  void _Reloadall() async {
+    // setState(() async {
+    print(_journals.length);
+    await SQLHelper.deleteAllItems();
+    for (var i = 0; i < _journals.length; i++) {
+      print('Again.inserts');
+
+      print(_journals.length);
+      String defaultval = _journals[i]['defaultlang'];
+      String englishval = _journals[i]['english'];
+      String tamilval = _journals[i]['tamil'];
+      String hindival = _journals[i]['hindi'];
+
+      await SQLHelper.createItem(defaultval, englishval, tamilval, hindival);
+    }
+    // });
+
+    _refreshJournals();
+  }
+
+  void _Deleteall() async {
+    CircularProgressIndicator();
+    await SQLHelper.deleteAllItems();
+    _refreshJournals();
+  }
+
+  // Clear the text fields
+
 // Insert a new journal to the database
   Future<void> _addItem() async {
     await SQLHelper.createItem(_defaultlangController.text,
@@ -145,8 +192,7 @@ class _HomePageState extends State<HomePage> {
 
   // Update an existing journal
   Future<void> _updateItem(int id) async {
-    await SQLHelper.updateItem(id, _defaultlangController.text,
-        _englishController.text, _tamilController.text, _hindiController.text);
+    await SQLHelper.updateItem(id, 'hello', 'hello', 'வணக்கம்', 'नमस्ते');
     _refreshJournals();
   }
 
@@ -172,33 +218,68 @@ class _HomePageState extends State<HomePage> {
           : ListView.builder(
               itemCount: _journals.length,
               itemBuilder: (context, index) => Card(
-                color: Colors.orange[200],
-                margin: const EdgeInsets.all(15),
-                child: ListTile(
-                    title: Text(_journals[index]['defaultlang']),
-                    subtitle: Text(_journals[index]['english']),
-                    trailing: SizedBox(
-                      width: 100,
-                      child: Row(
-                        children: [
-                          IconButton(
-                            icon: const Icon(Icons.edit),
-                            onPressed: () => _showForm(_journals[index]['id']),
-                          ),
-                          IconButton(
-                            icon: const Icon(Icons.delete),
-                            onPressed: () =>
-                                _deleteItem(_journals[index]['id']),
-                          ),
-                        ],
-                      ),
-                    )),
-              ),
+                  color: Colors.orange[200],
+                  margin: const EdgeInsets.all(15),
+                  child: Column(
+                    children: [
+                      Text('$index'),
+                      Text('word:-' + _journals[index]['defaultlang']),
+                      Text('English Language:-' + _journals[index]['english']),
+                      Text('Tamil Language:-' + _journals[index]['tamil']),
+                      Text('Hindi Language:-' + _journals[index]['hindi']),
+                      SizedBox(
+                        width: 100,
+                        child: Row(
+                          children: [
+                            IconButton(
+                              icon: const Icon(Icons.edit),
+                              onPressed: () =>
+                                  _showForm(_journals[index]['id']),
+                            ),
+                            IconButton(
+                              icon: const Icon(Icons.delete),
+                              onPressed: () =>
+                                  _deleteItem(_journals[index]['id']),
+                            ),
+                          ],
+                        ),
+                      )
+                    ],
+                  )),
             ),
-      floatingActionButton: FloatingActionButton(
-        child: const Icon(Icons.add),
-        onPressed: () => _showForm(null),
-      ),
+      floatingActionButton: Wrap(
+          direction: Axis.horizontal, //use vertical to show  on vertical axis
+          children: <Widget>[
+            Container(
+                margin: EdgeInsets.all(10),
+                child: FloatingActionButton(
+                  onPressed: () => _Reloadall(),
+                  child: Icon(Icons.update),
+                )), //button first
+
+            Container(
+                margin: EdgeInsets.all(10),
+                child: FloatingActionButton(
+                  onPressed: () => _showForm(null),
+                  backgroundColor: Colors.deepPurpleAccent,
+                  child: Icon(Icons.add),
+                )), // button second
+            Container(
+                margin: EdgeInsets.all(10),
+                child: FloatingActionButton(
+                  onPressed: () => _Againinsert(),
+                  backgroundColor: Colors.yellow,
+                  child: Icon(Icons.restart_alt),
+                )),
+
+            Container(
+                margin: EdgeInsets.all(10),
+                child: FloatingActionButton(
+                  onPressed: () => _Deleteall(),
+                  backgroundColor: Colors.deepOrangeAccent,
+                  child: Icon(Icons.delete_forever),
+                )),
+          ]),
     );
   }
 }

@@ -82,4 +82,13 @@ class SQLHelper {
       debugPrint("Something went wrong when deleting an item: $err");
     }
   }
+
+  static Future<void> deleteAllItems() async {
+    final db = await SQLHelper.db();
+    try {
+      await db.delete("langu"); // Remove the "where" and "whereArgs" parameters
+    } catch (err) {
+      debugPrint("Something went wrong when deleting all items: $err");
+    }
+  }
 }
