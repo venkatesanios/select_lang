@@ -36,6 +36,7 @@ class _HomePageState extends State<HomePage> {
       _journals = data;
       _isLoading = false;
     });
+    print(_journals);
   }
 
   @override

@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:select_lang/secondpage.dart';
+import 'package:select_lang/testlanguage/langsample..dart';
 
-class HomePage extends StatelessWidget {
+class HomePagelanguage extends StatelessWidget {
   final List locale = [
     {'name': 'ENGLISH', 'locale': Locale('en', 'US')},
     {'name': 'ಕನ್ನಡ', 'locale': Locale('kn', 'IN')},
@@ -53,6 +54,28 @@ class HomePage extends StatelessWidget {
     return Scaffold(
         appBar: AppBar(
           title: Text('title'.tr),
+        ),
+        drawer: SafeArea(
+          child: Drawer(
+            elevation: 2,
+            child: ListTile(
+              title: Text('testSQL table'),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const Langsample(),
+                  ),
+                );
+              },
+              // onTap: () {
+              //   Navigator.push(
+              //       context,
+              //       MaterialPageRoute(
+              //           builder: (context) => const Langsample()));
+              // },
+            ),
+          ),
         ),
         body: Container(
           alignment: Alignment.center,
