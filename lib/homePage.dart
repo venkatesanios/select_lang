@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:select_lang/secondpage.dart';
 import 'package:select_lang/testlanguage/langsample..dart';
+import 'package:translator/translator.dart';
 
 class HomePagelanguage extends StatelessWidget {
   final List locale = [
@@ -33,7 +34,17 @@ class HomePagelanguage extends StatelessWidget {
                         child: Text(locale[index]['name']),
                         onTap: () {
                           print(locale[index]['name']);
+
                           updateLanguage(locale[index]['locale']);
+                          var input =
+                              "Motor can't start, Becasuse of  starter trip ,overload AMPS";
+                          // print(input);
+
+                          final translator = GoogleTranslator();
+
+                          translator
+                              .translate(input, from: 'en', to: 'zu')
+                              .then(print);
                         },
                       ),
                     );

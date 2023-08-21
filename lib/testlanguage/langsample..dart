@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:select_lang/db/sqlhelper.dart';
+import 'package:flutter_localization/flutter_localization.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class Langsample extends StatelessWidget {
   const Langsample({Key? key}) : super(key: key);
@@ -9,7 +11,7 @@ class Langsample extends StatelessWidget {
     return MaterialApp(
         // Remove the debug banner
         debugShowCheckedModeBanner: false,
-        title: 'Language Select',
+        title: AppLocalizations.of(context).hello,
         theme: ThemeData(
           primarySwatch: Colors.orange,
         ),

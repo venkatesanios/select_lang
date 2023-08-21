@@ -25,14 +25,14 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      localizationsDelegates: [
-        AppLocalizations.delegate,
-        // GlobalMaterialLocalizations.delegate,
-        // GlobalWidgetsLocalizations.delegate,
-        GlobalCupertinoLocalizations.delegate,
-      ],
+      // localizationsDelegates: [
+      //   AppLocalizations.delegate,
+      //   // GlobalMaterialLocalizations.delegate,
+      //   // GlobalWidgetsLocalizations.delegate,
+      //   // GlobalCupertinoLocalizations.delegate,
+      // ],
 
-      // locale: Locale('ta'),
+      //  locale: const Locale('ta'),
 
       supportedLocales: [Locale('en'), Locale('ta')],
       // home: LanguageScreen(),
